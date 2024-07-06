@@ -16,7 +16,7 @@ public class GrabSpawner : MonoBehaviour
 
     [Space(10)]
     public Vector3 positionRandomizer = new Vector3(0, 0, 0);
-    public Vector3 rotation = new Vector3(0, 90, 0);
+    public Vector3 rotation = new Vector3(0, 0, 0);
 
     [Space(10)]
     public Vector3 moveDirection = new Vector3(1, 0, 0);
@@ -54,7 +54,7 @@ public class GrabSpawner : MonoBehaviour
                 carObject.SetActive(true);
 
                 carObject.transform.position = transform.position + Vector3.Scale(Random.insideUnitSphere, positionRandomizer);
-                carObject.transform.rotation = Quaternion.Euler(rotation);
+                carObject.transform.rotation = Quaternion.Euler(rotation) * carObject.transform.rotation;
 
                 MovingCrateController movingCrateController = carObject.GetComponent<MovingCrateController>();
                 movingCrateController.moveDirection = moveDirection;

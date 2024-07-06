@@ -24,8 +24,8 @@ public class AudioSystem : MonoBehaviour
 
         this.PlayBackground();
 
-        Invoke("PlayBackground", 5f);
-        Invoke("PlayTrap", 6f);
+        // Invoke("PlayBackground", 5f);
+        // Invoke("PlayTrap", 6f);
     }
 
     // Update is called once per frame

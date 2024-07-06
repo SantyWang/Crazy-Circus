@@ -93,13 +93,14 @@ public class PlayerController : MonoBehaviour
         {
             GameObject.Destroy(other.gameObject);
             AddCrate();
+            GameObject.Find("AudioSystem").GetComponent<AudioSystem>().PlayProp();
         }
         if(other.gameObject.tag == "Grab")
         {
             GameObject.Destroy(other.gameObject);
             // 人物获得道具
             addGrab(other.gameObject);
-
+            GameObject.Find("AudioSystem").GetComponent<AudioSystem>().PlayProp();
         }
     }
 
