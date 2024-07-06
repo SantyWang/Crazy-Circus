@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using static AmazingAssets.CurvedWorld.Example.RunnerPlayer;
 
 public class PlayerController : MonoBehaviour
 {
@@ -22,6 +21,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        animator.SetFloat("run", 1.0f);
+        animator.SetBool("gr", true);
     }
     bool isColliding = false;
     // Update is called once per frame
@@ -65,7 +66,7 @@ public class PlayerController : MonoBehaviour
 
             }
             transform.localPosition += new Vector3(0, 0, horizontalSpeed * Time.deltaTime);
-            animator.SetInteger("Move Direction", 1);
+            animator.SetFloat("turn", -1);
         }
         else if (Input.GetKey(moveRightKey))
         {
@@ -104,12 +105,11 @@ public class PlayerController : MonoBehaviour
 
             }
             transform.localPosition += new Vector3(0, 0, -horizontalSpeed * Time.deltaTime);
-
-            animator.SetInteger("Move Direction", 2);
+            animator.SetFloat("turn", 1);
         }
         else
         {
-            animator.SetInteger("Move Direction", 0);
+            animator.SetFloat("turn", 0);
         }
     }
 
