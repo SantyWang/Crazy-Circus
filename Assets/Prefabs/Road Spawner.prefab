@@ -2443,7 +2443,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 60, y: 1, z: 20}
-  m_Center: {x: 30, y: -0.5, z: 0}
+  m_Center: {x: 30, y: -0.68, z: 0}
 --- !u!114 &6013333486829421804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6442,7 +6442,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 60, y: 1, z: 20}
-  m_Center: {x: 30, y: -0.5, z: 0}
+  m_Center: {x: 30, y: -0.68, z: 0}
 --- !u!114 &8482507746936137501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6717,7 +6717,7 @@ GameObject:
   - component: {fileID: 4336207947478113042}
   - component: {fileID: 3183874985490400107}
   m_Layer: 0
-  m_Name: Chunk Spawner
+  m_Name: Road Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -6839,7 +6839,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 60, y: 1, z: 20}
-  m_Center: {x: 30, y: -0.5, z: 0}
+  m_Center: {x: 30, y: -0.68, z: 0}
 --- !u!114 &7999257081953590164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9840,7 +9840,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 60, y: 1, z: 20}
-  m_Center: {x: 30, y: -0.5, z: 0}
+  m_Center: {x: 30, y: -0.68, z: 0}
 --- !u!114 &4277756045289803094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10350,7 +10350,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 60, y: 1, z: 20}
-  m_Center: {x: 30, y: -0.5, z: 0}
+  m_Center: {x: 30, y: -0.68, z: 0}
 --- !u!114 &8416684274057988107
 MonoBehaviour:
   m_ObjectHideFlags: 0
