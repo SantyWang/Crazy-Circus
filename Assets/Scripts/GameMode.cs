@@ -15,10 +15,15 @@ public class GameMode : MonoBehaviour
     [HideInInspector]
     public bool isGameRunning = false;
 
+    private GameObject playerStart1;
+    private GameObject playerStart2;
+
+    private UIController uiController;
+
     // Start is called before the first frame update
     void Awake()
     {
-        
+        uiController = GameObject.Find("UI").GetComponent<UIController>();
     }
 
     // Update is called once per frame
@@ -33,9 +38,11 @@ public class GameMode : MonoBehaviour
         {
             return;
         }
+        isGameRunning = true;
+
         // 生成人物
-        var playerStart1 = GameObject.Find("PlayerStart1");
-        playerStart1.SetActive(true);
+        playerStart1 = GameObject.Find("PlayerStart1");
+        playerStart1.SetActive(false);
         if (playerStart1 != null )
         {
             player = Instantiate(playerPrefab).GetComponent<PlayerController>();
@@ -43,8 +50,8 @@ public class GameMode : MonoBehaviour
             player.transform.rotation = playerStart1.transform.rotation;
             player.moveSpeed = playerMovingSpeed;
         }
-        var playerStart2 = GameObject.Find("PlayerStart2");
-        playerStart2.SetActive(true);
+        playerStart2 = GameObject.Find("PlayerStart2");
+        playerStart2.SetActive(false);
         if (playerStart2 != null)
         {
             player2 = Instantiate(playerPrefab2).GetComponent<PlayerController>();
@@ -66,7 +73,9 @@ public class GameMode : MonoBehaviour
             var grabSpawner = GrabSpawner.GetComponent<GrabSpawner>();
             grabSpawner.StartGame();
         }
-        isGameRunning = true;
+
+        // 控制 UI Panel
+        uiController.EnterGamePanel();
     }
 
     public void StopGame()
@@ -75,15 +84,24 @@ public class GameMode : MonoBehaviour
         {
             return;
         }
-        var playerStart1 = GameObject.Find("PlayerStart1");
+        isGameRunning = false;
+
         playerStart1.SetActive(false);
-        var playerStart2 = GameObject.Find("PlayerStart2");
         playerStart2.SetActive(false);
+
         if (crateSpawner != null)
         {
             crateSpawner.StopGame();
         }
-        isGameRunning = false;
+
+        // 控制 UI Panel
+        uiController.EnterStartPanel();
+    }
+
+    public void EndGame()
+    {
+        // 控制 UI Panel
+        uiController.EnterEndPanel();
     }
 
     public void PauseGame()
