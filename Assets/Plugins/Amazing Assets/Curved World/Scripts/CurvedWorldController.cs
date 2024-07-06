@@ -267,16 +267,16 @@ namespace AmazingAssets
                 Shader.SetGlobalVector(materialPropertyID_RotationAxis, Vector3.zero);
 
                 Shader.SetGlobalVector(materialPropertyID_BendSize, Vector3.zero);
-                Shader.SetGlobalFloat(materialPropertyID_BendSize, 0);
+                //Shader.SetGlobalFloat(materialPropertyID_BendSize, 0);
 
                 Shader.SetGlobalVector(materialPropertyID_BendOffset, Vector3.zero);
-                Shader.SetGlobalFloat(materialPropertyID_BendOffset, 0);
+                //Shader.SetGlobalFloat(materialPropertyID_BendOffset, 0);
 
                 Shader.SetGlobalVector(materialPropertyID_BendAngle, Vector2.zero);
-                Shader.SetGlobalFloat(materialPropertyID_BendAngle, 0);
+                //Shader.SetGlobalFloat(materialPropertyID_BendAngle, 0);
 
                 Shader.SetGlobalVector(materialPropertyID_BendMinimumRadius, Vector2.zero);
-                Shader.SetGlobalFloat(materialPropertyID_BendMinimumRadius, 0);
+                //Shader.SetGlobalFloat(materialPropertyID_BendMinimumRadius, 0);
 
                 Shader.SetGlobalFloat(materialPropertyID_BendRolloff, 10);
             }

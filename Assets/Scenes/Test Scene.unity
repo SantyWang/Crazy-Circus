@@ -280,6 +280,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player1
       objectReference: {fileID: 0}
+    - target: {fileID: 4887656870579877335, guid: 1e7f3224c1fcda4498f66f76f04eb852, type: 3}
+      propertyPath: m_Constraints
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 8774542769520636729, guid: 1e7f3224c1fcda4498f66f76f04eb852, type: 3}
+      propertyPath: initialCrateNum
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -336,6 +344,10 @@ PrefabInstance:
     - target: {fileID: 6003314093809940930, guid: 0cf96e516a12c3b4ba8342e7071c609b, type: 3}
       propertyPath: m_Name
       value: Player2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6849960718059542006, guid: 0cf96e516a12c3b4ba8342e7071c609b, type: 3}
+      propertyPath: m_Constraints
+      value: 120
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

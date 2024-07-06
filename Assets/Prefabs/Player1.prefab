@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: 200379429888595697}
   - component: {fileID: 4821680531588964066}
   - component: {fileID: 8774542769520636729}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player1
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -231,7 +231,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 118
+  m_Constraints: 114
   m_CollisionDetection: 0
 --- !u!136 &200379429888595697
 CapsuleCollider:
@@ -293,8 +293,11 @@ MonoBehaviour:
   carriedCratePrefab: {fileID: 8444238979230049489, guid: 46f10c127c0848946ae31345d863aef2, type: 3}
   moveLeftKey: 97
   moveRightKey: 100
+  jump: 32
   horizontalSpeed: 2
   moveSpeed: 2
+  initialCrateNum: 3
+  jumpForce: 300
 --- !u!1 &726943384099670583
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6156989864814685725}
   - component: {fileID: 7781007216902283514}
   - component: {fileID: 2027667531083839773}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DemoPlayer1
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -126,6 +126,7 @@ MonoBehaviour:
   moveRightKey: 100
   horizontalSpeed: 1
   moveSpeed: 5
+  initialCrateNum: 3
 --- !u!1 &291675448247126009
 GameObject:
   m_ObjectHideFlags: 0
