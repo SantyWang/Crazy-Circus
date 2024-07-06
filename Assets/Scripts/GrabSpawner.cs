@@ -118,17 +118,17 @@ public class GrabSpawner : MonoBehaviour
     // 让对手远离自己
     private void scare(PlayerController from, PlayerController to)
     {
-        var dir = from.transform.position - to.transform.position;
+        var dir = to.transform.position - from.transform.position;
         dir = dir.normalized;
-        to.rigidBody.AddForce(dir * to.horizontalSpeed * 20, ForceMode.Force);
+        to.rigidBody.AddForce(dir * to.horizontalSpeed * 200, ForceMode.Force);
         Debug.Log("玩家"+from.name+"让"+to.name+"远离自己");
     }
     // 让对手靠近自己
     private void attract(PlayerController from, PlayerController to)
     {
-        var dir = to.transform.position - from.transform.position;
+        var dir = from.transform.position - to.transform.position;
         dir = dir.normalized;
-        to.rigidBody.AddForce(dir * to.horizontalSpeed * 20, ForceMode.Force);
+        to.rigidBody.AddForce(dir * to.horizontalSpeed * 200, ForceMode.Force);
         Debug.Log("玩家" + from.name + "让" + to.name + "靠近自己");
     }
     // 给自己回一滴血

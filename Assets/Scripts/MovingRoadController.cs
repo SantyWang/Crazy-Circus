@@ -1,4 +1,4 @@
-using AmazingAssets.CurvedWorld.Example;
+﻿using AmazingAssets.CurvedWorld.Example;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

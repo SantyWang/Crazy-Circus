@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
             
             if (anotherPlayer !=null)
             {
-                string grab = shiftGrab();
+                string grab = popGrab();
                 if(grab != null)
                 {
                     GameObject.Find("Grab Spawner").GetComponent<GrabSpawner>().useGrab(
@@ -105,6 +105,11 @@ public class PlayerController : MonoBehaviour
         allCarriedCrates.Remove(crate);
         GameObject.Destroy(crate);
         rigidBody.mass -= crate.GetComponent<CarriedCrateController>().mass;
+        // 如果没有箱子了，游戏结束
+        if (allCarriedCrates.Count == 0)
+        {
+            GameObject.Find("UI").GetComponent<UIController>().EnterGamePanel();
+        }
     }
 
     public void AddCrate()
@@ -144,35 +149,30 @@ public class PlayerController : MonoBehaviour
     }
 
     // 持有道具
-    private string[] grablist = new string[3];
-    private int grabNum = 3;
+    public List<string> grablist = new List<string>();
+    private int grabNum = 1;
     private void pushGrab(GameObject grab)
     {
-        string[] res = new string[grabNum];
-        res[0] = grab.name;
-        // push 压入一个道具,最先进入的道具在最后，超出长度的道具被丢弃
-        for (int i = 1; i < grabNum; i++)
+        // 目前只持有一个道具
+        if(grablist.Count >= grabNum)
         {
-            res[i] = grablist[i - 1];
+            grablist.RemoveAt(0);
         }
-        grablist = res;
+        grablist.Add(grab.name);
+        GameObject.Find("UI").GetComponent<UIController>().UpdateGrabPanel(this);
     }
 
     // 获取最后一个道具
-    public string shiftGrab()
+    public string popGrab()
     {
-        string[] res = new string[grabNum];
-        if (grablist[0] == null)
+        if(grablist.Count == 0)
         {
             return null;
         }
-        string first = grablist[0];
-        for (int i = 0; i < grabNum-1 ; i++)
-        {
-            res[i] = grablist[i+1];
-        }
-        grablist = res;
-        return first;
+        var last = grablist.Last();
+        grablist.RemoveAt(grablist.Count - 1);
+        GameObject.Find("UI").GetComponent<UIController>().UpdateGrabPanel(this);
+        return last;
     }
 
     private PlayerController getAnotherPlayer()

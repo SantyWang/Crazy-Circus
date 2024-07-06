@@ -76,6 +76,8 @@ public class GameMode : MonoBehaviour
 
         // 控制 UI Panel
         uiController.EnterGamePanel();
+        uiController.UpdateGrabPanel(player);
+        uiController.UpdateGrabPanel(player2);
     }
 
     public void StopGame()
