@@ -53,6 +53,13 @@ public class GameMode : MonoBehaviour
             crateSpawner = CrateSpawner.GetComponent<CrateSpawner>();
             crateSpawner.StartGame();
         }
+
+        var GrabSpawner = GameObject.Find("Grab Spawner");
+        if (GrabSpawner != null)
+        {
+            var grabSpawner = GrabSpawner.GetComponent<GrabSpawner>();
+            grabSpawner.StartGame();
+        }   
     }
 
     public void StopGame()
