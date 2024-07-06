@@ -22,7 +22,6 @@ public class RoadSpawner : MonoBehaviour
     GameObject lastChunk;
     GameMode gameMode;
 
-
     void Start()
     {
         gameMode = GameObject.Find("GameMode").GetComponent<GameMode>();
