@@ -12,6 +12,8 @@ public class GameMode : MonoBehaviour
     public PlayerController player2;
     public float playerMovingSpeed = 5;
     private CrateSpawner crateSpawner;
+    [HideInInspector]
+    public bool isGameRunning = false;
 
     // Start is called before the first frame update
     void Awake()
@@ -27,6 +29,10 @@ public class GameMode : MonoBehaviour
 
     public void StartGame()
     {
+        if (isGameRunning)
+        {
+            return;
+        }
         // 生成人物
         var playerStart1 = GameObject.Find("PlayerStart1");
         playerStart1.SetActive(true);
@@ -59,11 +65,16 @@ public class GameMode : MonoBehaviour
         {
             var grabSpawner = GrabSpawner.GetComponent<GrabSpawner>();
             grabSpawner.StartGame();
-        }   
+        }
+        isGameRunning = true;
     }
 
     public void StopGame()
     {
+        if (!isGameRunning)
+        {
+            return;
+        }
         var playerStart1 = GameObject.Find("PlayerStart1");
         playerStart1.SetActive(false);
         var playerStart2 = GameObject.Find("PlayerStart2");
@@ -72,6 +83,7 @@ public class GameMode : MonoBehaviour
         {
             crateSpawner.StopGame();
         }
+        isGameRunning = false;
     }
 
     public void PauseGame()

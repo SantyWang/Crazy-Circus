@@ -21,8 +21,8 @@ public class PlayerController : MonoBehaviour
     public Transform rightFootAnchor;
     public AudioClip leftFootAudio;
     public AudioClip rightFootAudio;
-
-    private List<GameObject> allCarriedCrates = new List<GameObject>();
+    [HideInInspector]
+    public List<GameObject> allCarriedCrates = new List<GameObject>();
     private Animator animator;
     private AudioSource audioSource;
     Rigidbody rigidBody;
@@ -88,8 +88,19 @@ public class PlayerController : MonoBehaviour
 
     private void AddCrate()
     {
-        GameObject newCrate = GameObject.Instantiate(carriedCratePrefab, carriedCratePivot);
-        newCrate.transform.localPosition = new Vector3(0, allCarriedCrates.Count * 0.398f, 0);
+        GameObject newCrate = GameObject.Instantiate(carriedCratePrefab);
+        if (allCarriedCrates.Count == 0)
+        {
+            newCrate.transform.position = carriedCratePivot.position + carriedCratePivot.up * (0.4f + allCarriedCrates.Count * 0.4f);
+            newCrate.transform.rotation = carriedCratePivot.rotation;
+            newCrate.GetComponent<ConfigurableJoint>().connectedBody = carriedCratePivot.GetComponent<Rigidbody>();
+        }
+        else
+        {
+            newCrate.transform.position = allCarriedCrates.Last().transform.position + allCarriedCrates.Last().transform.up  * 0.4f;
+            newCrate.transform.rotation = allCarriedCrates.Last().transform.rotation;
+            newCrate.GetComponent<ConfigurableJoint>().connectedBody = allCarriedCrates.Last().GetComponent<Rigidbody>();
+        }
         allCarriedCrates.Add(newCrate);
         rigidBody.mass += newCrate.GetComponent<CarriedCrateController>().mass;
     }
