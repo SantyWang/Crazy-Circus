@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8167904480493986434}
   - component: {fileID: 1209215683422515517}
   m_Layer: 0
-  m_Name: Grab1
+  m_Name: banana1
   m_TagString: Grab
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Crate_dark_black 1
+  m_Name: Crate_dark_box3
   m_Shader: {fileID: 4800000, guid: e8a820dc9aec7d946a12eaea41e5bffb, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -47,7 +47,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 790410d342351094a895c5e2b34ac455, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7ef5b2b011ab1354798cd920371f17dc, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:

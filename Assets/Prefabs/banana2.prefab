@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 5220024481137349394}
   - component: {fileID: 1093001487979349057}
   - component: {fileID: 8167904480493986434}
-  - component: {fileID: 390371761172510080}
+  - component: {fileID: 1209215683422515517}
   m_Layer: 0
-  m_Name: Grab3 copy
+  m_Name: banana2
   m_TagString: Grab
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,9 +29,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8763766158529263876}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.6251515, y: -50.029404, z: 0.03343698}
+  m_LocalScale: {x: 300, y: 300, z: 300}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -86,7 +86,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8763766158529263876}
-  m_Mesh: {fileID: -7516697830436642832, guid: 5688a9cd11674b44fa63b9db18864a8f, type: 3}
+  m_Mesh: {fileID: -4121367844085772556, guid: 5688a9cd11674b44fa63b9db18864a8f, type: 3}
 --- !u!54 &1093001487979349057
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -128,7 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveDirection: {x: 1, y: 0, z: 0}
   movingSpeed: 1
---- !u!135 &390371761172510080
+--- !u!135 &1209215683422515517
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -147,5 +147,5 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.03503543
-  m_Center: {x: 0.00010651164, y: 0.00711296, z: -0.007483394}
+  m_Radius: 0.0012335223
+  m_Center: {x: 0.00017333409, y: 0.000021622807, z: 0.000016124599}
