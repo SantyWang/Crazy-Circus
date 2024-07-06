@@ -1978,6 +1978,10 @@ MonoBehaviour:
   moveSpeed: 2
   initialCrateNum: 3
   jumpForce: 300
+  footStepVFX: {fileID: 104829970813648393, guid: ed6cc4c75e58f5149a2d68d77b22a53d, type: 3}
+  leftFootAnchor: {fileID: 7716673296229013943}
+  rightFootAnchor: {fileID: 2098970189250627752}
+  grabKey1: 49
 --- !u!1 &6283021509699708772
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,6 +16,9 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 2f;
     public int initialCrateNum = 3;
     public float jumpForce = 5.0f;
+    public GameObject footStepVFX;
+    public Transform leftFootAnchor;
+    public Transform rightFootAnchor;
 
     private List<GameObject> allCarriedCrates = new List<GameObject>();
     private Animator animator;
@@ -53,11 +56,11 @@ public class PlayerController : MonoBehaviour
             grounded = false;
             animator.SetBool("gr", false);
         }
-        if (Input.GetKey(moveLeftKey))
+        if (Input.GetKey(moveLeftKey) && grounded)
         {
             rigidBody.AddForce(transform.right * -horizontalSpeed * rigidBody.mass, ForceMode.Force);
         }
-        else if (Input.GetKey(moveRightKey))
+        else if (Input.GetKey(moveRightKey) && grounded)
         {
             rigidBody.AddForce(transform.right * horizontalSpeed * rigidBody.mass, ForceMode.Force);
         }
@@ -137,5 +140,17 @@ public class PlayerController : MonoBehaviour
     void Jump()
     {
         rigidBody.AddForce(transform.up * jumpForce, ForceMode.Force);
+    }
+
+    public void PlayLeftFootVFX ()
+    {
+        var effect = GameObject.Instantiate(footStepVFX);
+        effect.transform.position = leftFootAnchor.position;
+    }
+
+    public void PlayRightFootVFX()
+    {
+        var effect = GameObject.Instantiate(footStepVFX);
+        effect.transform.position = rightFootAnchor.position;
     }
 } 
