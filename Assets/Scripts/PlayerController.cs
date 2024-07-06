@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     Rigidbody rigidBody;
 
+    public KeyCode grabKey1 = KeyCode.Alpha1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,13 +33,19 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKey(moveLeftKey))
         {
-            rigidBody.AddForce(transform.right * -horizontalSpeed, ForceMode.Force);
+            rigidBody.AddForce(transform.right * -horizontalSpeed * rigidBody.mass, ForceMode.Force);
         }
         else if (Input.GetKey(moveRightKey))
         {
-            rigidBody.AddForce(transform.right * horizontalSpeed, ForceMode.Force);
+            rigidBody.AddForce(transform.right * horizontalSpeed * rigidBody.mass, ForceMode.Force);
         }
         animator.SetFloat("turn", -rigidBody.velocity.z);
+
+        if (Input.GetKeyUp(grabKey1))
+        {
+            string[] grabs = getGrabs();
+            Debug.Log("Player name:" + gameObject.name + "; Grabs:[" + grabs[0] + "," + grabs[1] + "," + grabs[2] + "]");
+        }
     }
 
     private void AddCrate()
@@ -55,5 +63,43 @@ public class PlayerController : MonoBehaviour
             GameObject.Destroy(other.gameObject);
             AddCrate();
         }
+        if(other.gameObject.tag == "Grab")
+        {
+            GameObject.Destroy(other.gameObject);
+            // 人物获得道具
+            addGrab(other.gameObject);
+
+        }
+    }
+
+    // 持有道具
+    private string[] grablist = new string[3];
+    private void addGrab(GameObject grab)
+    {
+        // 只能有3个道具，当道具数量大于3个时，弹出最早的道具
+        if (grablist[2] != null)
+        {
+            grablist[0] = grablist[1];
+            grablist[1] = grablist[2];
+            grablist[2] = grab.name;
+        }
+        else if (grablist[1] != null)
+        {
+            grablist[2] = grab.name;
+        }
+        else if (grablist[0] != null)
+        {
+            grablist[1] = grab.name;
+        }
+        else
+        {
+            grablist[0] = grab.name;
+        }
+        Debug.Log("Player name:" + gameObject.name + "; Grabs:[" + grablist[0] + "," + grablist[1] + "," + grablist[2] + "]");
+    }
+
+    public string[] getGrabs()
+    {
+        return grablist;
     }
 }
