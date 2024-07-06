@@ -24,10 +24,16 @@ public class CrateSpawner : MonoBehaviour
 
     float deltaTime;
 
-    // Start is called before the first frame update
-    void Start()
+    public void StartGame()
     {
+        deltaTime = 0;
         gameMode = GameObject.Find("GameMode").GetComponent<GameMode>();
+    }
+
+    public void StopGame()
+    {
+        deltaTime = 0;
+        gameMode = null;
     }
 
     // Update is called once per frame
@@ -35,7 +41,7 @@ public class CrateSpawner : MonoBehaviour
     {
         deltaTime += Time.deltaTime;
 
-        if (deltaTime > spawnRate)
+        if (gameMode && deltaTime > spawnRate)
         {
             deltaTime = 0;
 
