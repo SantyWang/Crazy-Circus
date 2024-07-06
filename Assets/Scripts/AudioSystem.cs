@@ -12,6 +12,12 @@ public class AudioSystem : MonoBehaviour
     public AudioClip trap;
     // 道具
     public AudioClip prop;
+    // 左脚
+    public AudioClip footLeft;
+    // 右脚
+    public AudioClip footRight;
+    // 跳跃
+    public AudioClip jump;
 
     private AudioSource audioSource;
     private AudioSource effectSource;
@@ -55,6 +61,27 @@ public class AudioSystem : MonoBehaviour
     {
         if (prop != null) {
             effectSource.PlayOneShot(prop, 1);
+        }
+    }
+
+    public void PlayFootLeft()
+    {
+        if (footLeft != null) {
+            effectSource.PlayOneShot(footLeft, Random.Range(0.05f, 0.1f));
+        }
+    }
+
+    public void PlayFootRight()
+    {
+        if (footRight != null) {
+            effectSource.PlayOneShot(footRight, Random.Range(0.05f, 0.1f));
+        }
+    }
+
+    public void PlayJump()
+    {
+        if (jump != null) {
+            effectSource.PlayOneShot(jump, 1);
         }
     }
 }

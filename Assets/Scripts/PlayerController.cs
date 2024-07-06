@@ -20,12 +20,10 @@ public class PlayerController : MonoBehaviour
     public GameObject footStepVFX;
     public Transform leftFootAnchor;
     public Transform rightFootAnchor;
-    public AudioClip leftFootAudio;
-    public AudioClip rightFootAudio;
 
     private List<GameObject> allCarriedCrates = new List<GameObject>();
     private Animator animator;
-    private AudioSource audioSource;
+    private AudioSystem audioSystem;
     public Rigidbody rigidBody;
     bool grounded = false;
 
@@ -36,7 +34,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         animator.SetFloat("run", 1.0f);
         rigidBody = GetComponent<Rigidbody>();
-        audioSource = GetComponent<AudioSource>();
+        audioSystem = GameObject.Find("AudioSystem").GetComponent<AudioSystem>();
         for (int i = 0; i < initialCrateNum; i++)
         {
             AddCrate();
@@ -179,19 +177,20 @@ public class PlayerController : MonoBehaviour
     void Jump()
     {
         rigidBody.AddForce(transform.up * jumpForce, ForceMode.Force);
+        audioSystem.PlayJump();
     }
 
     public void PlayLeftFootVFX()
     {
         var effect = GameObject.Instantiate(footStepVFX);
         effect.transform.position = leftFootAnchor.position;
-        audioSource.PlayOneShot(leftFootAudio, Random.Range(0.8f, 1.2f));
+        audioSystem.PlayFootLeft();
     }
 
     public void PlayRightFootVFX()
     {
         var effect = GameObject.Instantiate(footStepVFX);
         effect.transform.position = rightFootAnchor.position;
-        audioSource.PlayOneShot(rightFootAudio, Random.Range(0.8f, 1.2f));
+        audioSystem.PlayFootRight();
     }
 }

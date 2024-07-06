@@ -146,6 +146,9 @@ MonoBehaviour:
   background: {fileID: 8300000, guid: 053f96f50958c4c9db8459c7e64a2c07, type: 3}
   trap: {fileID: 8300000, guid: 473b4c4e9bf9645ecb97f1ea5d6e42c3, type: 3}
   prop: {fileID: 8300000, guid: 473b4c4e9bf9645ecb97f1ea5d6e42c3, type: 3}
+  footLeft: {fileID: 8300000, guid: 74dfebaa0141bcf47baeb7f4e6683a44, type: 3}
+  footRight: {fileID: 8300000, guid: 1dd1c7b2920534043bebac2e322c1d68, type: 3}
+  jump: {fileID: 8300000, guid: 235a548266b2c438ca6563a38b04c97b, type: 3}
 --- !u!1 &7754494375617560736
 GameObject:
   m_ObjectHideFlags: 0

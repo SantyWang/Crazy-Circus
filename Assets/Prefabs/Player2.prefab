@@ -1985,7 +1985,8 @@ MonoBehaviour:
   rightFootAnchor: {fileID: 2098970189250627752}
   leftFootAudio: {fileID: 8300000, guid: 74dfebaa0141bcf47baeb7f4e6683a44, type: 3}
   rightFootAudio: {fileID: 8300000, guid: 1dd1c7b2920534043bebac2e322c1d68, type: 3}
-  grabKey1: 49
+  jumpAudio: {fileID: 8300000, guid: 235a548266b2c438ca6563a38b04c97b, type: 3}
+  rigidBody: {fileID: 0}
 --- !u!82 &1887630252337677242
 AudioSource:
   m_ObjectHideFlags: 0
