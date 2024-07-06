@@ -34,7 +34,7 @@ public class RoadSpawner : MonoBehaviour
             chunk.SetActive(true);
 
             chunk.GetComponent<MovingRoadController>().spawner = this;
-            chunk.GetComponent<MovingRoadController>().movingSpeed = gameMode.player.moveSpeed;
+            chunk.GetComponent<MovingRoadController>().movingSpeed = gameMode.playerMovingSpeed;
 
             switch (axis)
             {

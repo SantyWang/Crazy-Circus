@@ -10,7 +10,7 @@ public class GameMode : MonoBehaviour
     public PlayerController player;
     [HideInInspector]
     public PlayerController player2;
-
+    public float playerMovingSpeed = 5;
     private CrateSpawner crateSpawner;
 
     // Start is called before the first frame update
@@ -35,6 +35,7 @@ public class GameMode : MonoBehaviour
             player = Instantiate(playerPrefab).GetComponent<PlayerController>();
             player.transform.localPosition = playerStart1.transform.localPosition;
             player.transform.rotation = playerStart1.transform.rotation;
+            player.moveSpeed = playerMovingSpeed;
         }
         var playerStart2 = GameObject.Find("PlayerStart2");
         playerStart2.SetActive(true);
@@ -43,6 +44,7 @@ public class GameMode : MonoBehaviour
             player2 = Instantiate(playerPrefab2).GetComponent<PlayerController>();
             player2.transform.localPosition = playerStart2.transform.localPosition;
             player2.transform.rotation = playerStart2.transform.rotation;
+            player2.moveSpeed = playerMovingSpeed;
         }
 
         // 开始生成道具 / 开始生成道路

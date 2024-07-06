@@ -57,7 +57,7 @@ public class CrateSpawner : MonoBehaviour
 
                 MovingCrateController movingCrateController = carObject.GetComponent<MovingCrateController>();
                 movingCrateController.moveDirection = moveDirection;
-                movingCrateController.movingSpeed = gameMode.player.moveSpeed;
+                movingCrateController.movingSpeed = gameMode.playerMovingSpeed;
             }
         }
     }
