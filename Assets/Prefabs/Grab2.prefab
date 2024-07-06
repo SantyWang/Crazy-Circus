@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5220024481137349394}
   - component: {fileID: 1093001487979349057}
   - component: {fileID: 8167904480493986434}
-  - component: {fileID: 7267388159365008481}
+  - component: {fileID: 1508283302258962647}
   m_Layer: 0
   m_Name: Grab2
   m_TagString: Grab
@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: -1.6490822, y: -0.6737402, z: 0.029721959}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -56,8 +56,9 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
+  - {fileID: 2100000, guid: f4991bacd9a278b458fb040f7c065333, type: 2}
+  - {fileID: -2806404139380182949, guid: 5688a9cd11674b44fa63b9db18864a8f, type: 3}
   - {fileID: 2100000, guid: 9502f2a243b9ae24ba2939cd8269b5d1, type: 2}
-  - {fileID: 2100000, guid: 89db9f074703e8b4fb6afec21ca659fe, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -86,7 +87,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8763766158529263876}
-  m_Mesh: {fileID: 4300000, guid: 8f90bdc8aeb4bad4db0cb091100a44f4, type: 3}
+  m_Mesh: {fileID: 5999801800477934532, guid: 5688a9cd11674b44fa63b9db18864a8f, type: 3}
 --- !u!54 &1093001487979349057
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -128,8 +129,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveDirection: {x: 1, y: 0, z: 0}
   movingSpeed: 1
---- !u!135 &7267388159365008481
-SphereCollider:
+--- !u!65 &1508283302258962647
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -147,5 +148,5 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 2.655179
-  m_Center: {x: 0.44983482, y: 1.7188042, z: 0.13540304}
+  m_Size: {x: 0.19685063, y: 0.19685058, z: 0.1968506}
+  m_Center: {x: -0.000000011175871, y: -0.00000011175871, z: -0.014396258}

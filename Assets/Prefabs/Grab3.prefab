@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 788841345900162929}
   - component: {fileID: 5220024481137349394}
   - component: {fileID: 1093001487979349057}
-  - component: {fileID: 7316706933159121674}
   - component: {fileID: 8167904480493986434}
+  - component: {fileID: 390371761172510080}
   m_Layer: 0
   m_Name: Grab3
   m_TagString: Grab
@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -56,8 +56,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
+  - {fileID: 2100000, guid: 3a92cb5491323544e899b9ebe45d846c, type: 2}
   - {fileID: 2100000, guid: 9502f2a243b9ae24ba2939cd8269b5d1, type: 2}
-  - {fileID: 2100000, guid: 89db9f074703e8b4fb6afec21ca659fe, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -86,7 +86,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8763766158529263876}
-  m_Mesh: {fileID: 4300004, guid: 44b06cdb06a927045a7f933db8c43ada, type: 3}
+  m_Mesh: {fileID: 6616481467236627798, guid: 5688a9cd11674b44fa63b9db18864a8f, type: 3}
 --- !u!54 &1093001487979349057
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -114,7 +114,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!135 &7316706933159121674
+--- !u!114 &8167904480493986434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8763766158529263876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c9b5821af76ddd44a7978dc36d6b67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDirection: {x: 1, y: 0, z: 0}
+  movingSpeed: 1
+--- !u!135 &390371761172510080
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -133,19 +147,5 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.089999996
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8167904480493986434
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8763766158529263876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c9b5821af76ddd44a7978dc36d6b67b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveDirection: {x: 1, y: 0, z: 0}
-  movingSpeed: 1
+  m_Radius: 0.03503543
+  m_Center: {x: 0.00010651164, y: 0.00711296, z: -0.007483394}
