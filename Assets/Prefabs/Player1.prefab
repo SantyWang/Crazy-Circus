@@ -295,6 +295,7 @@ MonoBehaviour:
   moveLeftKey: 97
   moveRightKey: 100
   jump: 32
+  grabKey: 115
   horizontalSpeed: 2
   moveSpeed: 2
   initialCrateNum: 3

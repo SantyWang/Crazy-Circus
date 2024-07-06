@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public KeyCode moveLeftKey = KeyCode.A;
     public KeyCode moveRightKey = KeyCode.D;
     public KeyCode jump = KeyCode.Space;
+    public KeyCode grabKey = KeyCode.S;
     public float horizontalSpeed = 1f;
     public float moveSpeed = 2f;
     public int initialCrateNum = 3;
@@ -25,10 +26,9 @@ public class PlayerController : MonoBehaviour
     private List<GameObject> allCarriedCrates = new List<GameObject>();
     private Animator animator;
     private AudioSource audioSource;
-    Rigidbody rigidBody;
+    public Rigidbody rigidBody;
     bool grounded = false;
 
-    public KeyCode grabKey1 = KeyCode.Alpha1;
 
     // Start is called before the first frame update
     void Start()
@@ -78,15 +78,34 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("jump", false);
         }
 
-        if (Input.GetKeyUp(grabKey1))
+        if (Input.GetKeyUp(grabKey))
         {
-            string[] grabs = getGrabs();
-            Debug.Log("Player name:" + gameObject.name + "; Grabs:[" + grabs[0] + "," + grabs[1] + "," + grabs[2] + "]");
+            PlayerController anotherPlayer = getAnotherPlayer();
+            
+            if (anotherPlayer !=null)
+            {
+                string grab = shiftGrab();
+                if(grab != null)
+                {
+                    GameObject.Find("Grab Spawner").GetComponent<GrabSpawner>().useGrab(
+                        this, anotherPlayer, grab
+                    );
+                }
+            }
+
 
         }
     }
+    public void RemoveCrate()
+    {
+        GameObject crate = allCarriedCrates.Last();
+        crate.transform.localPosition = new Vector3(0, 0, 0);
+        allCarriedCrates.Remove(crate);
+        GameObject.Destroy(crate);
+        rigidBody.mass -= crate.GetComponent<CarriedCrateController>().mass;
+    }
 
-    private void AddCrate()
+    public void AddCrate()
     {
         GameObject newCrate = GameObject.Instantiate(carriedCratePrefab, carriedCratePivot);
         newCrate.transform.localPosition = new Vector3(0, allCarriedCrates.Count * 0.398f, 0);
@@ -102,44 +121,59 @@ public class PlayerController : MonoBehaviour
             AddCrate();
             GameObject.Find("AudioSystem").GetComponent<AudioSystem>().PlayProp();
         }
-        if(other.gameObject.tag == "Grab")
+        if (other.gameObject.tag == "Grab")
         {
-            GameObject.Destroy(other.gameObject);
             // 人物获得道具
-            addGrab(other.gameObject);
+            pushGrab(other.gameObject);
             GameObject.Find("AudioSystem").GetComponent<AudioSystem>().PlayProp();
+            GameObject.Destroy(other.gameObject);
         }
     }
 
     // 持有道具
     private string[] grablist = new string[3];
-    private void addGrab(GameObject grab)
+    private int grabNum = 3;
+    private void pushGrab(GameObject grab)
     {
-        // 只能有3个道具，当道具数量大于3个时，弹出最早的道具
-        if (grablist[2] != null)
+        string[] res = new string[grabNum];
+        res[0] = grab.name;
+        // push 压入一个道具,最先进入的道具在最后，超出长度的道具被丢弃
+        for (int i = 1; i < grabNum; i++)
         {
-            grablist[0] = grablist[1];
-            grablist[1] = grablist[2];
-            grablist[2] = grab.name;
+            res[i] = grablist[i - 1];
         }
-        else if (grablist[1] != null)
-        {
-            grablist[2] = grab.name;
-        }
-        else if (grablist[0] != null)
-        {
-            grablist[1] = grab.name;
-        }
-        else
-        {
-            grablist[0] = grab.name;
-        }
-        Debug.Log("Player name:" + gameObject.name + "; Grabs:[" + grablist[0] + "," + grablist[1] + "," + grablist[2] + "]");
+        grablist = res;
     }
 
-    public string[] getGrabs()
+    // 获取最后一个道具
+    public string shiftGrab()
     {
-        return grablist;
+        string[] res = new string[grabNum];
+        if (grablist[0] == null)
+        {
+            return null;
+        }
+        string first = grablist[0];
+        for (int i = 0; i < grabNum-1 ; i++)
+        {
+            res[i] = grablist[i+1];
+        }
+        grablist = res;
+        return first;
+    }
+
+    private PlayerController getAnotherPlayer()
+    {
+        GameObject[] playersGo = GameObject.FindGameObjectsWithTag("Player");
+        PlayerController anotherPlayer = null;
+        foreach (GameObject playerGo in playersGo)
+        {
+            if (playerGo != gameObject)
+            {
+                anotherPlayer = playerGo.GetComponent<PlayerController>();
+            }
+        }
+        return anotherPlayer;
     }
 
     void Jump()
@@ -147,7 +181,7 @@ public class PlayerController : MonoBehaviour
         rigidBody.AddForce(transform.up * jumpForce, ForceMode.Force);
     }
 
-    public void PlayLeftFootVFX ()
+    public void PlayLeftFootVFX()
     {
         var effect = GameObject.Instantiate(footStepVFX);
         effect.transform.position = leftFootAnchor.position;
@@ -160,4 +194,4 @@ public class PlayerController : MonoBehaviour
         effect.transform.position = rightFootAnchor.position;
         audioSource.PlayOneShot(rightFootAudio, Random.Range(0.8f, 1.2f));
     }
-} 
+}
