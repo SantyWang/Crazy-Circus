@@ -1,4 +1,4 @@
-Shader "Plugins/Amazing Assets/Curved World/Tutorial/Unlit Shader (Keywords Free)"
+Shader "Amazing Assets/Curved World/Tutorial/Unlit Shader (Keywords Free)"
 {
     Properties
     {
