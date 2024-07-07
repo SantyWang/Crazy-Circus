@@ -18,6 +18,7 @@ public class GameMode : MonoBehaviour
     private GameObject playerStart1;
     private GameObject playerStart2;
 
+    BarrierSpawner barrierSpawner;
     private UIController uiController;
 
     // Start is called before the first frame update
@@ -76,6 +77,13 @@ public class GameMode : MonoBehaviour
             crateSpawner.StartGame();
         }
 
+        var BarrierSpawner = GameObject.Find("Barrier Spawner");
+        if (BarrierSpawner != null)
+        {
+            barrierSpawner = BarrierSpawner.GetComponent<BarrierSpawner>();
+            barrierSpawner.StartGame();
+        }
+
         var GrabSpawner = GameObject.Find("Grab Spawner");
         if (GrabSpawner != null)
         {
@@ -101,6 +109,11 @@ public class GameMode : MonoBehaviour
         if (crateSpawner != null)
         {
             crateSpawner.StopGame();
+        }
+
+        if (barrierSpawner != null)
+        { 
+            barrierSpawner.StopGame();
         }
 
         Debug.Log("EndGame");

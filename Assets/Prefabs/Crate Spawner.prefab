@@ -85,7 +85,7 @@ MonoBehaviour:
   - {fileID: 4805628579128944529}
   spawnRate: 1
   spawnRandomizer: 0.668
-  positionRandomizer: {x: 0, y: 0, z: 3}
+  positionRandomizer: {x: 0, y: 0, z: 8}
   rotation: {x: 0, y: 90, z: 0}
   moveDirection: {x: -1, y: 0, z: 0}
 --- !u!1001 &5845022685747809992

@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip rightFootAudio;
     [HideInInspector]
     public List<GameObject> allCarriedCrates = new List<GameObject>();
+    public float initialBreakForce = 100;
 
     private Animator animator;
     private AudioSystem audioSystem;
@@ -169,7 +170,7 @@ public class PlayerController : MonoBehaviour
             newCrate.transform.rotation = carriedCratePivot.rotation;
             var configurableJoint = newCrate.GetComponent<ConfigurableJoint>();
             configurableJoint.connectedBody = carriedCratePivot.GetComponent<Rigidbody>();
-            configurableJoint.breakForce = 100;
+            configurableJoint.breakForce = initialBreakForce;
         }
         else
         {
@@ -177,7 +178,7 @@ public class PlayerController : MonoBehaviour
             newCrate.transform.rotation = allCarriedCrates.Last().transform.rotation;
             var configurableJoint = newCrate.GetComponent<ConfigurableJoint>();
             configurableJoint.connectedBody = allCarriedCrates.Last().GetComponent<Rigidbody>();
-            configurableJoint.breakForce = Mathf.Max(100 - allCarriedCrates.Count * 10, 30);
+            configurableJoint.breakForce = Mathf.Max(initialBreakForce - allCarriedCrates.Count * 10, 30);
         }
         horizontalSpeed += 0.1f;
         allCarriedCrates.Add(newCrate);

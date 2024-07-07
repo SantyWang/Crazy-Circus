@@ -7,6 +7,8 @@ TagManager:
   - Road
   - Crate
   - GameMode
+  - Grab
+  - Barrier
   layers:
   - Default
   - TransparentFX
@@ -16,7 +18,7 @@ TagManager:
   - UI
   - CarriedCrate
   - Player
-  - 
+  - Barrier
   - 
   - 
   - 
