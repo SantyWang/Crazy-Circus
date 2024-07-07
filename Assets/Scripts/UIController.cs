@@ -78,17 +78,17 @@ public class UIController : MonoBehaviour
 
     public void UpdateGrabPanel(PlayerController player)
     {
-        var playerGarbsPanel = player.name.Contains("Player1") ? playerAGarbsPanel : playerBGarbsPanel;
+        var playerGarbsPanel = player.name.Contains("1") ? playerAGarbsPanel : playerBGarbsPanel;
         
 
         // 没有道具时
         if (player.grablist.Count == 0)
         {
-            // 隐藏grab1
+            // 隐藏 grab1
             playerGarbsPanel.gameObject.SetActive(false);
             return;
         }
-        //在该panel下查找Grab1节点
+        // 在该 panel 下查找 Grab1 节点
         
         playerGarbsPanel.gameObject.SetActive(true);
 
