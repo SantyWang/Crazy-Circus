@@ -144,6 +144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   start: {fileID: 8300000, guid: 9e3abcae91e5d4976800c4bb89aa4c2b, type: 3}
   background: {fileID: 8300000, guid: 053f96f50958c4c9db8459c7e64a2c07, type: 3}
+  end: {fileID: 8300000, guid: 419c04cfaaced4ed89fe6bd410af9ada, type: 3}
   trap: {fileID: 8300000, guid: 473b4c4e9bf9645ecb97f1ea5d6e42c3, type: 3}
   prop: {fileID: 8300000, guid: 473b4c4e9bf9645ecb97f1ea5d6e42c3, type: 3}
   footLeft: {fileID: 8300000, guid: 74dfebaa0141bcf47baeb7f4e6683a44, type: 3}

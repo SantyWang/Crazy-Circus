@@ -8,6 +8,8 @@ public class AudioSystem : MonoBehaviour
     public AudioClip start;
     // 循环背景音乐
     public AudioClip background;
+    // 游戏结束音效
+    public AudioClip end;
     // 陷阱
     public AudioClip trap;
     // 道具
@@ -28,16 +30,26 @@ public class AudioSystem : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         effectSource = GameObject.Find("AudioEffect").GetComponent<AudioSource>();
 
-        this.PlayBackground();
+        // this.PlayBackground();
 
-        // Invoke("PlayBackground", 5f);
+        // Invoke("PlayGameEnd", 5f);
         // Invoke("PlayTrap", 6f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!audioSource.isPlaying && audioSource.clip != null) {
+        if (audioSource.isPlaying)
+        {
+            return;
+        }
+        if (audioSource.clip == end)
+        {
+            audioSource.clip = start;
+            audioSource.Play();
+        }
+        else
+        {
             audioSource.clip = background;
             audioSource.Play();
         }
@@ -83,5 +95,12 @@ public class AudioSystem : MonoBehaviour
         if (jump != null) {
             effectSource.PlayOneShot(jump, 1);
         }
+    }
+
+    public void PlayGameEnd()
+    {
+        audioSource.Stop();
+        audioSource.clip = end;
+        audioSource.Play();
     }
 }
