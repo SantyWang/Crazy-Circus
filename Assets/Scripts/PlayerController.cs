@@ -47,11 +47,22 @@ public class PlayerController : MonoBehaviour
 
     void endGame()
     {
+        animator.SetBool("fail", true);
         GameObject.Find("GameMode").GetComponent<GameMode>().StopGame();
+    }
+
+    private bool disableUserInput = false;
+    public void disableInput()
+    {
+        disableUserInput = true;
     }
 
     void Update()
     {
+        if (disableUserInput)
+        {
+            return;
+        }
         //GROUNDED
         if (Physics.Raycast(transform.position + new Vector3(0.1f, 0.1f, 0.1f), Vector3.down, 0.15f)
           || Physics.Raycast(transform.position + new Vector3(0.1f, 0.1f, -0.1f), Vector3.down, 0.15f)
@@ -167,10 +178,15 @@ public class PlayerController : MonoBehaviour
         rigidBody.mass += carriedCrateController.mass;
         carriedCrateController.playerController = this;
         jumpForce += 10f;
+        rigidBody.mass += newCrate.GetComponent<CarriedCrateController>().mass;
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        if (disableUserInput)
+        {
+            return;
+        }
         if (other.gameObject.tag == "Crate")
         {
             GameObject.Destroy(other.gameObject);

@@ -40,6 +40,17 @@ public class GameMode : MonoBehaviour
         }
         isGameRunning = true;
 
+        if (player)
+        {
+            player.gameObject.SetActive(false);
+            GameObject.Destroy(player.gameObject);
+        }
+        if (player2)
+        {
+            player2.gameObject.SetActive(false);
+            GameObject.Destroy(player2.gameObject);
+        }
+
         // 生成人物
         playerStart1 = GameObject.Find("PlayerStart1");
         if (playerStart1 != null )
@@ -96,11 +107,8 @@ public class GameMode : MonoBehaviour
 
         // 控制 UI Panel
         uiController.EnterEndPanel();
-
-        player.gameObject.SetActive(false);
-        GameObject.Destroy(player.gameObject);
-        player2.gameObject.SetActive(false);
-        GameObject.Destroy(player2.gameObject);
+        player.disableInput();
+        player2.disableInput();
     }
 
     public void EndGame()
