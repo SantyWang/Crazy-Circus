@@ -270,4 +270,5 @@ public class PlayerController : MonoBehaviour
         effect.transform.position = rightFootAnchor.position;
         audioSystem.PlayFootRight();
     }
+
 }

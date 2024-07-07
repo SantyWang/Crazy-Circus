@@ -143,6 +143,7 @@ public class GrabSpawner : MonoBehaviour
     {
         to.RemoveCrate();
         Debug.Log("Íæ¼Ò" + from.name + "¸ø"+to.name+"¿ÛµôÒ»µÎÑª");
+        to.boxVFX.GetComponent<ParticleSystem>().Play();
     }
 
 }
