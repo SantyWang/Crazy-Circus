@@ -95,10 +95,9 @@ public class GameMode : MonoBehaviour
         Debug.Log("EndGame");
 
         // 控制 UI Panel
-        uiController.EnterStartPanel();
+        uiController.EnterEndPanel();
 
         player.gameObject.SetActive(false);
-        //player
         GameObject.Destroy(player.gameObject);
         player2.gameObject.SetActive(false);
         GameObject.Destroy(player2.gameObject);

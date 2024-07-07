@@ -45,6 +45,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void endGame()
+    {
+        GameObject.Find("GameMode").GetComponent<GameMode>().StopGame();
+    }
+
     void Update()
     {
         //GROUNDED
@@ -62,14 +67,19 @@ public class PlayerController : MonoBehaviour
             grounded = false;
             animator.SetBool("gr", false);
         }
+
         if (Input.GetKey(moveLeftKey) && grounded)
         {
-            rigidBody.AddForce(transform.right * -horizontalSpeed * rigidBody.mass, ForceMode.Force);
+            rigidBody.AddForce(transform.right * -horizontalSpeed * rigidBody.mass , ForceMode.Force);
+            //单靠力量移动会很缓慢，手感不好，所以在此基础上加一个位置移动
+            transform.position += transform.right * -horizontalSpeed * Time.deltaTime;
         }
         else if (Input.GetKey(moveRightKey) && grounded)
         {
             rigidBody.AddForce(transform.right * horizontalSpeed * rigidBody.mass, ForceMode.Force);
+            transform.position += transform.right * horizontalSpeed * Time.deltaTime;
         }
+
         animator.SetFloat("turn", -rigidBody.velocity.z);
         if (Input.GetKey(jump) && grounded)
         {
@@ -120,7 +130,7 @@ public class PlayerController : MonoBehaviour
         // 如果没有箱子了，游戏结束
         if (allCarriedCrates.Count == 0)
         {
-            GameObject.Find("UI").GetComponent<UIController>().EnterGamePanel();
+            endGame();
         }
     }
 
@@ -141,6 +151,12 @@ public class PlayerController : MonoBehaviour
         }
         allCarriedCrates.Add(newCrate);
         rigidBody.mass += newCrate.GetComponent<CarriedCrateController>().mass;
+    }
+
+    public void OnPlayerJointBreak(float breakForce)
+    {
+        // 箱子断开，游戏结束
+        endGame();
     }
 
     private void OnTriggerEnter(Collider other)
