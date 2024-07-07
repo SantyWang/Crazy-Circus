@@ -136,6 +136,7 @@ public class GrabSpawner : MonoBehaviour
     {
         player.AddCrate();
         Debug.Log("玩家" + player.name + "给自己回了一滴血");
+        player.collisonVFX.GetComponent<ParticleSystem>().Play();
     }
     // 扣掉对方一滴血
     private void hurt(PlayerController from, PlayerController to)
@@ -143,4 +144,5 @@ public class GrabSpawner : MonoBehaviour
         to.RemoveCrate();
         Debug.Log("玩家" + from.name + "给"+to.name+"扣掉一滴血");
     }
+
 }
