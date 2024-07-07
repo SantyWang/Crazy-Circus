@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -18,6 +21,11 @@ public class PlayerController : MonoBehaviour
     public int initialCrateNum = 3;
     public float jumpForce = 5.0f;
     public GameObject footStepVFX;
+    public GameObject collisonVFX;
+    public GameObject boxVFX;
+    public GameObject magnetVFX;
+    public GameObject boomVFX;
+
     public Transform leftFootAnchor;
     public Transform rightFootAnchor;
 
@@ -49,6 +57,7 @@ public class PlayerController : MonoBehaviour
     {
         GameObject.Find("GameMode").GetComponent<GameMode>().StopGame();
     }
+
     private bool disableUserInput = false;
     public void disableInput()
     {
