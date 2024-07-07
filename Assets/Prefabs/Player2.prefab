@@ -2048,7 +2048,7 @@ MonoBehaviour:
   moveRightKey: 275
   jump: 273
   grabKey: 274
-  horizontalSpeed: 3.5
+  horizontalSpeed: 20
   moveSpeed: 2
   initialCrateNum: 3
   jumpForce: 500
