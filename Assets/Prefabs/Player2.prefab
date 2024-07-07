@@ -2047,10 +2047,10 @@ MonoBehaviour:
   moveRightKey: 275
   jump: 273
   grabKey: 274
-  horizontalSpeed: 2
+  horizontalSpeed: 3.5
   moveSpeed: 2
   initialCrateNum: 3
-  jumpForce: 300
+  jumpForce: 500
   footStepVFX: {fileID: 104829970813648393, guid: ed6cc4c75e58f5149a2d68d77b22a53d, type: 3}
   collisonVFX: {fileID: 1902303436178865458}
   boxVFX: {fileID: 0}

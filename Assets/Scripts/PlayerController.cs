@@ -55,6 +55,7 @@ public class PlayerController : MonoBehaviour
 
     void endGame()
     {
+        animator.SetBool("fail", true);
         GameObject.Find("GameMode").GetComponent<GameMode>().StopGame();
     }
 
@@ -90,12 +91,12 @@ public class PlayerController : MonoBehaviour
         {
             rigidBody.AddForce(transform.right * -horizontalSpeed * rigidBody.mass , ForceMode.Force);
             //单靠力量移动会很缓慢，手感不好，所以在此基础上加一个位置移动
-            transform.position += transform.right * -horizontalSpeed * Time.deltaTime;
+            //transform.position += transform.right * -horizontalSpeed * Time.deltaTime;
         }
         else if (Input.GetKey(moveRightKey) && grounded)
         {
             rigidBody.AddForce(transform.right * horizontalSpeed * rigidBody.mass, ForceMode.Force);
-            transform.position += transform.right * horizontalSpeed * Time.deltaTime;
+            //transform.position += transform.right * horizontalSpeed * Time.deltaTime;
         }
 
         animator.SetFloat("turn", -rigidBody.velocity.z);
@@ -141,10 +142,17 @@ public class PlayerController : MonoBehaviour
     public void RemoveCrate()
     {
         GameObject crate = allCarriedCrates.Last();
-        crate.transform.localPosition = new Vector3(0, 0, 0);
+        Destroy(crate.GetComponent<ConfigurableJoint>());
+        var crateRigidBody = crate.GetComponent<Rigidbody>();
+        crateRigidBody.useGravity = true;
+        crateRigidBody.AddForceAtPosition(crate.transform.position - crate.transform.up * 0.2f, crate.transform.up * Random.Range(100f, 150f));
         allCarriedCrates.Remove(crate);
-        GameObject.Destroy(crate);
-        rigidBody.mass -= crate.GetComponent<CarriedCrateController>().mass;
+        CarriedCrateController carriedCrateController = crate.GetComponent<CarriedCrateController>();
+        rigidBody.mass -= carriedCrateController.mass;
+        carriedCrateController.playerController = null;
+        carriedCrateController.ThrowAway();
+        horizontalSpeed -= 0.1f;
+        jumpForce -= 10f;
         // 如果没有箱子了，游戏结束
         if (allCarriedCrates.Count == 0)
         {
@@ -159,24 +167,26 @@ public class PlayerController : MonoBehaviour
         {
             newCrate.transform.position = carriedCratePivot.position + carriedCratePivot.up * (0.4f + allCarriedCrates.Count * 0.4f);
             newCrate.transform.rotation = carriedCratePivot.rotation;
-            newCrate.GetComponent<ConfigurableJoint>().connectedBody = carriedCratePivot.GetComponent<Rigidbody>();
+            var configurableJoint = newCrate.GetComponent<ConfigurableJoint>();
+            configurableJoint.connectedBody = carriedCratePivot.GetComponent<Rigidbody>();
+            configurableJoint.breakForce = 100;
         }
         else
         {
             newCrate.transform.position = allCarriedCrates.Last().transform.position + allCarriedCrates.Last().transform.up  * 0.4f;
             newCrate.transform.rotation = allCarriedCrates.Last().transform.rotation;
-            newCrate.GetComponent<ConfigurableJoint>().connectedBody = allCarriedCrates.Last().GetComponent<Rigidbody>();
+            var configurableJoint = newCrate.GetComponent<ConfigurableJoint>();
+            configurableJoint.connectedBody = allCarriedCrates.Last().GetComponent<Rigidbody>();
+            configurableJoint.breakForce = Mathf.Max(100 - allCarriedCrates.Count * 10, 30);
         }
+        horizontalSpeed += 0.1f;
         allCarriedCrates.Add(newCrate);
+        CarriedCrateController carriedCrateController = newCrate.GetComponent<CarriedCrateController>();
+        carriedCrateController.movingSpeed = moveSpeed;
+        rigidBody.mass += carriedCrateController.mass;
+        carriedCrateController.playerController = this;
+        jumpForce += 10f;
         rigidBody.mass += newCrate.GetComponent<CarriedCrateController>().mass;
-    }
-
-    public void OnPlayerJointBreak(float breakForce)
-    {
-        // 箱子断开，游戏结束
-        endGame();
-        // 失败方播放失败动画
-        animator.SetBool("fail", true);
     }
 
     private void OnTriggerEnter(Collider other)
