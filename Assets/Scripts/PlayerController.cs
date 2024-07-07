@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private AudioSystem audioSystem;
     public Rigidbody rigidBody;
+    GameMode gameMode;
     bool grounded = false;
 
 
@@ -52,12 +53,13 @@ public class PlayerController : MonoBehaviour
         {
             AddCrate();
         }
+        gameMode = GameObject.Find("GameMode").GetComponent<GameMode>();
     }
 
     void endGame()
     {
         animator.SetBool("fail", true);
-        GameObject.Find("GameMode").GetComponent<GameMode>().StopGame();
+        gameMode.StopGame();
     }
 
     private bool disableUserInput = false;
@@ -71,6 +73,33 @@ public class PlayerController : MonoBehaviour
         if (disableUserInput)
         {
             return;
+        }
+
+        if (transform.position.x < gameMode.deadZone)
+        {
+            transform.position -= transform.forward * gameMode.deadZone;
+
+            if (allCarriedCrates.Count > 3)
+            {
+                var newCount = allCarriedCrates.Count - 3;
+                allCarriedCrates.ForEach(crate =>
+                {
+                    Object.Destroy(crate);
+                });
+                allCarriedCrates.Clear();
+                for (int i = 0; i < newCount; i++)
+                {
+                    AddCrate();
+                }
+            }
+            else
+            {
+                endGame();
+            }
+        }
+        if (transform.position.y < -10)
+        {
+            endGame();
         }
         //GROUNDED
         if (Physics.Raycast(transform.position + new Vector3(0.1f, 0.1f, 0.1f), Vector3.down, 0.15f)

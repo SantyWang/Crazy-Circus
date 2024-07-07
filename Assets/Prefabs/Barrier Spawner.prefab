@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1074448275808737555}
   - component: {fileID: 1812875468374849642}
   - component: {fileID: 206478226315688279}
+  - component: {fileID: 4245626130367110183}
   m_Layer: 8
   m_Name: WoodenBarbedWireBarrier_33_v1
   m_TagString: Barrier
@@ -121,6 +122,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveDirection: {x: 1, y: 0, z: 0}
   movingSpeed: 1
+--- !u!54 &4245626130367110183
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1579014642673645766}
+  serializedVersion: 4
+  m_Mass: 50
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &2439459965191426395
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,6 +162,7 @@ GameObject:
   - component: {fileID: 3374600650123314083}
   - component: {fileID: 6319197797048684620}
   - component: {fileID: 9201439254696262158}
+  - component: {fileID: 2264461840318196387}
   m_Layer: 8
   m_Name: BarbedWireMetalFence_26_v1
   m_TagString: Barrier
@@ -242,6 +271,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveDirection: {x: 1, y: 0, z: 0}
   movingSpeed: 1
+--- !u!54 &2264461840318196387
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2439459965191426395}
+  serializedVersion: 4
+  m_Mass: 10
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &4155857151116016207
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,6 +311,7 @@ GameObject:
   - component: {fileID: 2498493386552957850}
   - component: {fileID: 3850010191295810255}
   - component: {fileID: 5583489516514593272}
+  - component: {fileID: 1537866279243339173}
   m_Layer: 8
   m_Name: WoodenBarrier_09_v1
   m_TagString: Barrier
@@ -346,7 +403,7 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -8430925605481246473, guid: c15c8257712a538499f0877d29e23f41, type: 3}
 --- !u!114 &5583489516514593272
@@ -363,6 +420,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveDirection: {x: 1, y: 0, z: 0}
   movingSpeed: 1
+--- !u!54 &1537866279243339173
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4155857151116016207}
+  serializedVersion: 4
+  m_Mass: 50
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &4563174049369110232
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,6 +460,7 @@ GameObject:
   - component: {fileID: 3409027095777258949}
   - component: {fileID: 2644154014692233776}
   - component: {fileID: 4665948785085631260}
+  - component: {fileID: 3956531213341213814}
   m_Layer: 8
   m_Name: BarbedWireFence_36_v1
   m_TagString: Barrier
@@ -483,6 +568,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveDirection: {x: 1, y: 0, z: 0}
   movingSpeed: 1
+--- !u!54 &3956531213341213814
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4563174049369110232}
+  serializedVersion: 4
+  m_Mass: 20
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5610237183853628697
 GameObject:
   m_ObjectHideFlags: 0
@@ -558,6 +670,7 @@ GameObject:
   - component: {fileID: 9214471075522204820}
   - component: {fileID: 7503548104344994219}
   - component: {fileID: 1417621251563924871}
+  - component: {fileID: 5519857047636918765}
   m_Layer: 8
   m_Name: SingleLog_09_v1
   m_TagString: Barrier
@@ -667,6 +780,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveDirection: {x: 1, y: 0, z: 0}
   movingSpeed: 1
+--- !u!54 &5519857047636918765
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7268982350081652033}
+  serializedVersion: 4
+  m_Mass: 10
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &7793178408440083269
 GameObject:
   m_ObjectHideFlags: 0
@@ -680,6 +820,7 @@ GameObject:
   - component: {fileID: 7793178408440083387}
   - component: {fileID: 7793178408440083386}
   - component: {fileID: 6116931823450244694}
+  - component: {fileID: 6724402269860907975}
   m_Layer: 8
   m_Name: ConcreteBarrier_08_v2
   m_TagString: Barrier
@@ -788,3 +929,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveDirection: {x: 1, y: 0, z: 0}
   movingSpeed: 1
+--- !u!54 &6724402269860907975
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7793178408440083269}
+  serializedVersion: 4
+  m_Mass: 50
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

@@ -14,6 +14,7 @@ public class GameMode : MonoBehaviour
     private CrateSpawner crateSpawner;
     [HideInInspector]
     public bool isGameRunning = false;
+    public float deadZone = -7;
 
     private GameObject playerStart1;
     private GameObject playerStart2;

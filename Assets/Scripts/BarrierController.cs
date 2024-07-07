@@ -12,13 +12,13 @@ public class BarrierController : MonoBehaviour
 
     void Start()
     {
-        //rigidBody = GetComponent<Rigidbody>();
+        rigidBody = GetComponent<Rigidbody>();
     }
 
     void FixedUpdate()
     {
-        transform.position += moveDirection * movingSpeed * Time.deltaTime;
-        //rigidBody.MovePosition(transform.position + moveDirection * movingSpeed * Time.deltaTime);
+        //transform.position += moveDirection * movingSpeed * Time.deltaTime;
+        rigidBody.MovePosition(transform.position + moveDirection * movingSpeed * Time.deltaTime);
 
         if (transform.position.y < -300)
         {
