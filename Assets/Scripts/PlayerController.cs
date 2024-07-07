@@ -49,9 +49,18 @@ public class PlayerController : MonoBehaviour
     {
         GameObject.Find("GameMode").GetComponent<GameMode>().StopGame();
     }
+    private bool disableUserInput = false;
+    public void disableInput()
+    {
+        disableUserInput = true;
+    }
 
     void Update()
     {
+        if (disableUserInput)
+        {
+            return;
+        }
         //GROUNDED
         if (Physics.Raycast(transform.position + new Vector3(0.1f, 0.1f, 0.1f), Vector3.down, 0.15f)
           || Physics.Raycast(transform.position + new Vector3(0.1f, 0.1f, -0.1f), Vector3.down, 0.15f)
