@@ -7,6 +7,8 @@ TagManager:
   - Road
   - Crate
   - GameMode
+  - Grab
+  - Barrier
   layers:
   - Default
   - TransparentFX
