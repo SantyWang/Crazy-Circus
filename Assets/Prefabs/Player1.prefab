@@ -299,7 +299,7 @@ MonoBehaviour:
   horizontalSpeed: 3.5
   moveSpeed: 2
   initialCrateNum: 3
-  jumpForce: 450
+  jumpForce: 500
   footStepVFX: {fileID: 104829970813648393, guid: ed6cc4c75e58f5149a2d68d77b22a53d, type: 3}
   leftFootAnchor: {fileID: 7842989981183608988}
   rightFootAnchor: {fileID: 7319513830124477421}
