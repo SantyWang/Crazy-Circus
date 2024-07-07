@@ -98,6 +98,18 @@ public class PlayerController : MonoBehaviour
 
         }
     }
+
+    public void OnDestroy()
+    {
+        // 销毁所有箱子
+        foreach (GameObject crate in allCarriedCrates)
+        {
+            GameObject.Destroy(crate);
+        }
+        // 销毁所有道具
+        grablist.Clear();
+    }
+
     public void RemoveCrate()
     {
         GameObject crate = allCarriedCrates.Last();

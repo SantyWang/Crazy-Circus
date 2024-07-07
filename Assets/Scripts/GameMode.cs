@@ -42,7 +42,6 @@ public class GameMode : MonoBehaviour
 
         // 生成人物
         playerStart1 = GameObject.Find("PlayerStart1");
-        playerStart1.SetActive(false);
         if (playerStart1 != null )
         {
             player = Instantiate(playerPrefab).GetComponent<PlayerController>();
@@ -51,7 +50,6 @@ public class GameMode : MonoBehaviour
             player.moveSpeed = playerMovingSpeed;
         }
         playerStart2 = GameObject.Find("PlayerStart2");
-        playerStart2.SetActive(false);
         if (playerStart2 != null)
         {
             player2 = Instantiate(playerPrefab2).GetComponent<PlayerController>();
@@ -88,16 +86,22 @@ public class GameMode : MonoBehaviour
         }
         isGameRunning = false;
 
-        playerStart1.SetActive(false);
-        playerStart2.SetActive(false);
 
         if (crateSpawner != null)
         {
             crateSpawner.StopGame();
         }
 
+        Debug.Log("EndGame");
+
         // 控制 UI Panel
         uiController.EnterStartPanel();
+
+        player.gameObject.SetActive(false);
+        //player
+        GameObject.Destroy(player.gameObject);
+        player2.gameObject.SetActive(false);
+        GameObject.Destroy(player2.gameObject);
     }
 
     public void EndGame()
