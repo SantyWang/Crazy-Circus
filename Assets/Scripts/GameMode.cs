@@ -6,6 +6,8 @@ public class GameMode : MonoBehaviour
 {
     public GameObject playerPrefab;
     public GameObject playerPrefab2;
+    public GameObject playerRagdoll;
+    public GameObject playerRagdoll2;
     [HideInInspector]
     public PlayerController player;
     [HideInInspector]
@@ -26,6 +28,8 @@ public class GameMode : MonoBehaviour
     void Awake()
     {
         uiController = GameObject.Find("UI").GetComponent<UIController>();
+        playerRagdoll.GetComponent<RagdollController>().movingSpeed = playerMovingSpeed;
+        playerRagdoll2.GetComponent<RagdollController>().movingSpeed = playerMovingSpeed;
     }
 
     // Update is called once per frame
@@ -41,7 +45,8 @@ public class GameMode : MonoBehaviour
             return;
         }
         isGameRunning = true;
-
+        playerRagdoll.SetActive(false);
+        playerRagdoll2.SetActive(false);
         if (player)
         {
             player.gameObject.SetActive(false);

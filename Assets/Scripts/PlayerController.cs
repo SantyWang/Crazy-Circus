@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -60,7 +59,25 @@ public class PlayerController : MonoBehaviour
 
     void endGame()
     {
-        animator.SetBool("fail", true);
+        gameObject.SetActive(false);
+        var ragdoll = gameMode.player == this ? gameMode.playerRagdoll : gameMode.playerRagdoll2;
+        ragdoll.SetActive(true);
+        ragdoll.transform.position = transform.position;
+        ragdoll.transform.rotation = transform.rotation;
+        ragdoll.transform.localScale = transform.localScale;
+        var rootRagdoll = ragdoll.transform.Find("ROOT");
+        var thisRoot = transform.Find("ROOT");
+
+        var transforms = rootRagdoll.GetComponentsInChildren<Transform>();
+        var thisTransforms = thisRoot.GetComponentsInChildren<Transform>();
+
+        for (var i = 0; i < transforms.Length; i++)
+        {
+            transforms[i].position = thisTransforms[i].position;
+            transforms[i].rotation = thisTransforms[i].rotation;
+            transforms[i].localScale = thisTransforms[i].localScale;
+        }
+
         gameMode.StopGame();
     }
 
@@ -210,7 +227,7 @@ public class PlayerController : MonoBehaviour
             newCrate.transform.rotation = allCarriedCrates.Last().transform.rotation;
             var configurableJoint = newCrate.GetComponent<ConfigurableJoint>();
             configurableJoint.connectedBody = allCarriedCrates.Last().GetComponent<Rigidbody>();
-            configurableJoint.breakForce = Mathf.Max(initialBreakForce - allCarriedCrates.Count * 10, 30);
+            configurableJoint.breakForce = Mathf.Max(initialBreakForce - allCarriedCrates.Count * 20, 30);
         }
         horizontalSpeed += 0.1f;
         allCarriedCrates.Add(newCrate);
