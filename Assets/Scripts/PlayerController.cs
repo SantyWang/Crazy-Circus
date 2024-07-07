@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody rigidBody;
     GameMode gameMode;
     bool grounded = false;
+    float initMass = 0;
 
 
     // Start is called before the first frame update
@@ -48,6 +49,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         animator.SetFloat("run", 1.0f);
         rigidBody = GetComponent<Rigidbody>();
+        initMass = rigidBody.mass;
         audioSystem = GameObject.Find("AudioSystem").GetComponent<AudioSystem>();
         for (int i = 0; i < initialCrateNum; i++)
         {
@@ -87,6 +89,7 @@ public class PlayerController : MonoBehaviour
                     Object.Destroy(crate);
                 });
                 allCarriedCrates.Clear();
+                rigidBody.mass = initMass;
                 for (int i = 0; i < newCount; i++)
                 {
                     AddCrate();
