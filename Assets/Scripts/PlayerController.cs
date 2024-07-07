@@ -166,10 +166,16 @@ public class PlayerController : MonoBehaviour
     {
         // 箱子断开，游戏结束
         endGame();
+        // 失败方播放失败动画
+        animator.SetBool("fail", true);
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        if (disableUserInput)
+        {
+            return;
+        }
         if (other.gameObject.tag == "Crate")
         {
             GameObject.Destroy(other.gameObject);
